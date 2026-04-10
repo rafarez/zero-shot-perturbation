@@ -32,7 +32,7 @@ To run the zero-shot in-silico perturbation pipeline, run the command below:
 ``` 
 MODE='layer_selective'
 N_TOP_GENES=100
-python perturbation --mode $MODE$ --n_top_genes $N_TOP_GENES --all_axis True
+python perturbation --mode $MODE$ --n_top_genes $N_TOP_GENES --all_axis False
 ```
 All data and scores from this pipeline is saved at `./data/perturbation_scores/${N_TOP_GENES}_top_genes/${MODE}`
 
