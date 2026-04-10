@@ -1,9 +1,9 @@
 
 # Setup env
-'''
+```
 conda create -n eva-rna python==3.10
 pip install transformers huggingface_hub torch==2.6.0 scanpy anndata tqdm scipy scikit-misc
-'''
+```
 
 ## Install eva-rna 
 This step is necessary using utils functions and monkey patching `EvaRnaModel` for layer selective perturbation.
@@ -30,7 +30,7 @@ All data and scores from this pipeline is saved at `./data/perturbation_scores/$
 # Evaluate pipeline scores
 To evaluate the scores obtained from the perturbation pipeline, run the command below:
 
-``` python evaluate.py --results ./data/perturbation_scores/${N_TOP_GENES}_top_genes/${MODE}/perturbation_results.csv
+```python evaluate.py --results ./data/perturbation_scores/${N_TOP_GENES}_top_genes/${MODE}/perturbation_results.csv
 ```
 Discounting logs, it should output results such as this:
 ```
