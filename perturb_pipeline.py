@@ -47,7 +47,7 @@ from transformers import AutoModel, AutoTokenizer
 from tqdm import tqdm
 
 
-from eva_rna.utils import _normalize_and_log
+#from eva_rna.utils import _normalize_and_log
 
 from gene_alias_map import MissingTargetGenesList, GENE_ALIAS_MAP
 from encode_and_save import load_cohort_data
@@ -83,11 +83,10 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--all_axis",
-        type=bool,
-        default=True,
+        action="store_true",
         help=(
             "Wether to use the full gradient vector for cosine scoring (all gene"
-            "positions), or to restrict to target-gene positions only. Default: True."
+            "positions), or to restrict to target-gene positions only."
             ),
     )
     parser.add_argument(
@@ -600,7 +599,7 @@ def run_perturbation_pipeline(
             # ---- Encode all samples (mode-dependent) -----------------------
             log.info("  Encoding healthy samples...")
             log.info("  Encoding disease samples...")
-            
+
             if mode == "latent_space":
                 # Cache final-layer gene embeddings (CLS stripped) for both
                 # cohorts.  These are the leaf tensors in perturb_one_sample.
@@ -774,8 +773,8 @@ def run_perturbation_pipeline(
 if __name__ == "__main__":
     args = parse_args()
     log.info(
-        "Mode: %s | n_top_genes: %d | grad_from_layer: %d",
-        args.mode, args.n_top_genes, args.grad_from_layer,
+        "Mode: %s | n_top_genes: %d | grad_from_layer: %d | all_axis: %s | benchmark_path: %s",
+        args.mode, args.n_top_genes, args.grad_from_layer, args.all_axis, args.benchmark_path
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
