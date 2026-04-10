@@ -15,13 +15,15 @@ pip install transformers huggingface_hub torch==2.6.0 scanpy anndata tqdm scipy 
 ## Install eva-rna 
 This step is necessary using utils functions and monkey patching `EvaRnaModel` for layer selective perturbation.
 Be sure to login to HuggingFace via `hf auth login`.
-```git clone https://huggingface.co/ScientaLab/eva-rna eva_rna
+```
+git clone https://huggingface.co/ScientaLab/eva-rna eva_rna
 touch eva_rna/__init__.py
 ```
 
 ## Download benchmark 
 This can be done either via the Notion page's link or via command line from drive. 
-```mkdir data 
+```
+mkdir data 
 wget -O data/benchmark_drug_target_disease_matrix.csv https://drive.usercontent.google.com/u/0/uc?id=1rPDrinSIDbpyK65WC_kWFGuR2DAjINSJ&export=download
 ```
 
